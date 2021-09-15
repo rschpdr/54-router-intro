@@ -39,25 +39,27 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar />
-        {/* IMPORTANTE: a barra "/" é obrigatória nos paths" */}
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Switch>
-          {/* Forma de renderizar componentes por rotas quando não precisamos passar props */}
-          {/* <Route path="/about/:city" component={AboutCity} />
-          <Route path="/about" component={About} /> */}
-          {/* Outra forma de renderizar passando props */}
-          <Route
-            path="/about/:city"
-            render={(routeProps) => {
-              return <AboutCity cities={cities} {...routeProps} />;
-            }}
-          />
-          <Route path="/about">
-            <About cities={cities} />
+        <div className="container mt-5">
+          {/* IMPORTANTE: a barra "/" é obrigatória nos paths" */}
+          <Route exact path="/">
+            <Home />
           </Route>
-        </Switch>
+          <Switch>
+            {/* Forma de renderizar componentes por rotas quando não precisamos passar props */}
+            {/* <Route path="/about/:city" component={AboutCity} />
+          <Route path="/about" component={About} /> */}
+            {/* Outra forma de renderizar passando props */}
+            <Route
+              path="/about/:city"
+              render={(routeProps) => {
+                return <AboutCity cities={cities} {...routeProps} />;
+              }}
+            />
+            <Route path="/about">
+              <About cities={cities} />
+            </Route>
+          </Switch>
+        </div>
       </BrowserRouter>
     </div>
   );
