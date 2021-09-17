@@ -1,5 +1,13 @@
+import { useState, useEffect } from "react";
+
 function AboutCity(props) {
+  const [campusData, setCampusData] = useState({ title: "", paragraph: "" });
+
   console.log(props);
+
+  useEffect(() => {
+    renderAboutCity();
+  }, []);
 
   function renderAboutCity() {
     const result = props.cities.find(
@@ -7,18 +15,19 @@ function AboutCity(props) {
     );
 
     if (result) {
-      return (
-        <div>
-          <h1>{result.title}</h1>
-          <p>{result.paragraph}</p>
-        </div>
-      );
+      setCampusData({ ...result });
+      console.log(campusData);
     }
 
-    return <p>Campus not found ):</p>;
+    // return <p>Campus not found ):</p>;
   }
 
-  return <div>{renderAboutCity()}</div>;
+  return (
+    <div>
+      <h1>{campusData.title}</h1>
+      <p>{campusData.paragraph}</p>
+    </div>
+  );
 }
 
 export default AboutCity;
